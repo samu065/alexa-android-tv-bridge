@@ -9,163 +9,217 @@
                     "name": "Netflix",
                     "port": 12340,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"app_name\": \"netflix\"}"
+                    "on_data": "{\"app_name\": \"netflix\"}",
+                    "use_fake_state": true
                 },
                 {
                     "name": "YouTube",
                     "port": 12341,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"app_name\": \"youtube\"}"
+                    "on_data": "{\"app_name\": \"youtube\"}",
+                    "use_fake_state": true
                 },
                 {
                     "name": "Prime Video",
                     "port": 12342,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"app_name\": \"prime video\"}"
+                    "on_data": "{\"app_name\": \"prime video\"}",
+                    "use_fake_state": true
                 },
                 {
                     "name": "Spotify",
                     "port": 12343,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"app_name\": \"spotify\"}"
+                    "on_data": "{\"app_name\": \"spotify\"}",
+                    "use_fake_state": true
                 },
                 {
                     "name": "Dazn",
                     "port": 12344,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"app_name\": \"dazn\"}"
+                    "on_data": "{\"app_name\": \"dazn\"}",
+                    "use_fake_state": true
                 },
                 {
                     "name": "Mediaset Infinity",
                     "port": 12345,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"app_name\": \"mediaset infinity\"}"
+                    "on_data": "{\"app_name\": \"mediaset infinity\"}",
+                    "use_fake_state": true
                 },
                 {
                     "name": "Rai Play",
                     "port": 12346,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"app_name\": \"rai play\"}"
+                    "on_data": "{\"app_name\": \"rai play\"}",
+                    "use_fake_state": true
                 },
                 {
                     "name": "Hotstar",
                     "port": 12347,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"app_name\": \"hotstar\"}"
+                    "on_data": "{\"app_name\": \"hotstar\"}",
+                    "use_fake_state": true
                 },
                 {
                     "name": "Sony Liv",
                     "port": 12348,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"app_name\": \"sony liv\"}"
+                    "on_data": "{\"app_name\": \"sony liv\"}",
+                    "use_fake_state": true
                 },
                 {
                     "name": "Kodi",
                     "port": 12349,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"app_name\": \"kodi\"}"
+                    "on_data": "{\"app_name\": \"kodi\"}",
+                    "use_fake_state": true
                 },
                 {
                     "name": "Volume Su",
                     "port": 12350,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"command\": \"volume_up\"}"
+                    "on_data": "{\"command\": \"volume_up\"}",
+                    "use_fake_state": true
                 },
                 {
                     "name": "Volume Giu",
                     "port": 12351,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"command\": \"volume_down\"}"
+                    "on_data": "{\"command\": \"volume_down\"}",
+                    "use_fake_state": true
                 },
                 {
                     "name": "Muto TV",
                     "port": 12352,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"command\": \"mute\"}"
+                    "on_data": "{\"command\": \"mute\"}",
+                    "use_fake_state": true
                 },
                 {
                     "name": "Tasto Home",
                     "port": 12353,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"command\": \"home\"}"
+                    "on_data": "{\"command\": \"home\"}",
+                    "use_fake_state": true
                 },
                 {
                     "name": "Indietro TV",
                     "port": 12354,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"command\": \"back\"}"
+                    "on_data": "{\"command\": \"back\"}",
+                    "use_fake_state": true
                 },
                 {
                     "name": "Play Pausa",
                     "port": 12355,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"command\": \"play_pause\"}"
+                    "on_data": "{\"command\": \"play_pause\"}",
+                    "use_fake_state": true
                 },
                 {
                     "name": "Sospendi TV",
                     "port": 12356,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"command\": \"power_sleep\"}"
+                    "on_data": "{\"command\": \"power_sleep\"}",
+                    "use_fake_state": true
                 },
                 {
                     "name": "Sveglia TV",
                     "port": 12357,
                     "method": "POST",
-                    "headers": {"Content-Type": "application/json"},
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
-                    "on_data": "{\"command\": \"power_wake\"}"
+                    "on_data": "{\"command\": \"power_wake\"}",
+                    "use_fake_state": true
                 }
             ]
         }
