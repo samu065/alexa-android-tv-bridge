@@ -15,7 +15,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"app_name\": \"netflix\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 },
                 {
                     "name": "YouTube",
@@ -27,7 +28,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"app_name\": \"youtube\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 },
                 {
                     "name": "Prime Video",
@@ -39,7 +41,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"app_name\": \"prime video\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 },
                 {
                     "name": "Spotify",
@@ -51,7 +54,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"app_name\": \"spotify\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 },
                 {
                     "name": "Dazn",
@@ -63,7 +67,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"app_name\": \"dazn\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 },
                 {
                     "name": "Mediaset Infinity",
@@ -75,7 +80,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"app_name\": \"mediaset infinity\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 },
                 {
                     "name": "Rai Play",
@@ -87,7 +93,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"app_name\": \"rai play\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 },
                 {
                     "name": "Hotstar",
@@ -99,7 +106,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"app_name\": \"hotstar\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 },
                 {
                     "name": "Sony Liv",
@@ -111,7 +119,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"app_name\": \"sony liv\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 },
                 {
                     "name": "Kodi",
@@ -123,7 +132,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"app_name\": \"kodi\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 },
                 {
                     "name": "Volume Su",
@@ -135,7 +145,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"command\": \"volume_up\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 },
                 {
                     "name": "Volume Giu",
@@ -147,7 +158,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"command\": \"volume_down\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 },
                 {
                     "name": "Muto TV",
@@ -159,7 +171,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"command\": \"mute\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 },
                 {
                     "name": "Tasto Home",
@@ -171,7 +184,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"command\": \"home\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 },
                 {
                     "name": "Indietro TV",
@@ -183,7 +197,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"command\": \"back\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 },
                 {
                     "name": "Play Pausa",
@@ -195,7 +210,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"command\": \"play_pause\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 },
                 {
                     "name": "Sospendi TV",
@@ -207,7 +223,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"command\": \"power_sleep\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 },
                 {
                     "name": "Sveglia TV",
@@ -219,7 +236,8 @@
                     "on_cmd": "http://127.0.0.1:5000/execute",
                     "off_cmd": "http://127.0.0.1:5000/health",
                     "on_data": "{\"command\": \"power_wake\"}",
-                    "use_fake_state": true
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 }
             ]
         }
