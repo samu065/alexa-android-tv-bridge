@@ -1,12 +1,16 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -e
 
-ADB_TARGET="127.0.0.1:5555"
+ADB_TARGET="emulator-5554"
 SERVER_PORT=5000
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-echo "==> Connessione ADB a $ADB_TARGET"
-adb connect "$ADB_TARGET"
+echo "==> Avvio adb server e verifica device $ADB_TARGET"
+adb start-server
+if ! adb devices | grep -q "^${ADB_TARGET}[[:space:]]*device$"; then
+    echo "ERRORE: $ADB_TARGET non risulta autorizzato. Esegui 'adb devices -l' per controllare lo stato."
+    exit 1
+fi
 
 echo "==> Avvio server Flask sulla porta $SERVER_PORT (background)"
 cd "$PROJECT_DIR"

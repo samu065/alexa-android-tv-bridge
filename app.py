@@ -8,7 +8,11 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 
 ADB_BIN = "adb"
-ADB_TARGET = "127.0.0.1:5555"
+# "emulator-5554" e' l'alias con cui l'adb server rileva automaticamente
+# l'adbd in loopback su questo box (porta 5555): e' gia' autorizzato in modo
+# permanente, a differenza di un "adb connect 127.0.0.1:5555" esplicito, che
+# su questa ROM richiede una nuova autorizzazione via popup ad ogni sessione.
+ADB_TARGET = "emulator-5554"
 
 # Mappa nome app (case-insensitive) -> package Android da lanciare con monkey
 # Package verificati con `adb shell pm list packages` sul box in uso

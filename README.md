@@ -1,6 +1,6 @@
 # Alexa → Android TV Bridge
 
-Server Flask che gira in Termux sul box Android TV e inoltra comandi ricevuti via HTTP al sistema Android tramite ADB in loopback (`127.0.0.1:5555`). L'integrazione con Alexa avviene tramite **Fauxmo**, che emula dispositivi smart (stile Wemo) scopribili in locale dall'Echo, senza bisogno di skill Alexa, AWS o esporre nulla su internet.
+Server Flask che gira in Termux sul box Android TV e inoltra comandi ricevuti via HTTP al sistema Android tramite ADB in loopback, target `emulator-5554` (così l'adb server rileva in automatico l'adbd in loopback sulla porta 5555 su questo box — su questa ROM un `adb connect 127.0.0.1:5555` esplicito risulta invece `unauthorized` ad ogni sessione). L'integrazione con Alexa avviene tramite **Fauxmo**, che emula dispositivi smart (stile Wemo) scopribili in locale dall'Echo, senza bisogno di skill Alexa, AWS o esporre nulla su internet.
 
 ## Setup Termux
 
@@ -18,9 +18,11 @@ chmod +x start_fauxmo.sh
 ```
 
 Lo script:
-1. connette adb a `127.0.0.1:5555`;
+1. avvia l'adb server e verifica che `emulator-5554` risulti autorizzato (`adb devices -l`);
 2. avvia `app.py` in background sulla porta 5000 (log in `server.log`);
 3. avvia `fauxmo` in background con la configurazione in `fauxmo.conf.json` (log in `fauxmo.log`), che espone un dispositivo smart per ogni app/comando mappato.
+
+Se al primo avvio `emulator-5554` non risulta ancora autorizzato, esegui `adb devices -l` manualmente: la prima volta Android mostra un popup sullo schermo della TV da accettare (idealmente con "Consenti sempre da questo computer").
 
 **Requisiti di rete**: l'Echo Alexa deve trovarsi sulla stessa rete Wi-Fi del box Android TV (Fauxmo funziona via UPnP/SSDP locale, nessuna porta va aperta su internet).
 
