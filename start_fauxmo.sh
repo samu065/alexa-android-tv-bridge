@@ -25,9 +25,16 @@ nohup fauxmo -c fauxmo.conf.json -v > fauxmo.log 2>&1 &
 FAUXMO_PID=$!
 echo "Fauxmo avviato (PID $FAUXMO_PID) - log: $PROJECT_DIR/fauxmo.log"
 
+sleep 2
+
+echo "==> Avvio watchdog (riavvia fauxmo da solo se si blocca)"
+nohup ./watchdog.sh > /dev/null 2>&1 &
+WATCHDOG_PID=$!
+echo "Watchdog avviato (PID $WATCHDOG_PID) - log: $PROJECT_DIR/watchdog.log"
+
 echo ""
 echo "Tutto pronto. Sul dispositivo Alexa (stessa rete Wi-Fi del box) di':"
 echo "  \"Alexa, scopri dispositivi\""
 echo "Poi comanda con: \"Alexa, accendi Netflix\", \"Alexa, accendi Volume Su\", ecc."
 echo ""
-echo "PID server: $SERVER_PID | PID fauxmo: $FAUXMO_PID"
+echo "PID server: $SERVER_PID | PID fauxmo: $FAUXMO_PID | PID watchdog: $WATCHDOG_PID"

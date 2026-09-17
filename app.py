@@ -38,8 +38,23 @@ KEY_COMMANDS = {
     "mute": "164",          # KEYCODE_VOLUME_MUTE
     "home": "3",            # KEYCODE_HOME
     "back": "4",            # KEYCODE_BACK
+    "menu": "82",           # KEYCODE_MENU
+    "up": "19",             # KEYCODE_DPAD_UP
+    "down": "20",           # KEYCODE_DPAD_DOWN
+    "left": "21",           # KEYCODE_DPAD_LEFT
+    "right": "22",          # KEYCODE_DPAD_RIGHT
+    "select": "23",         # KEYCODE_DPAD_CENTER
     "play_pause": "85",     # KEYCODE_MEDIA_PLAY_PAUSE
+    "stop": "86",           # KEYCODE_MEDIA_STOP
+    "next": "87",           # KEYCODE_MEDIA_NEXT
+    "previous": "88",       # KEYCODE_MEDIA_PREVIOUS
+    "rewind": "89",         # KEYCODE_MEDIA_REWIND
+    "fast_forward": "90",   # KEYCODE_MEDIA_FAST_FORWARD
 }
+
+# Mappa nome (case-insensitive) -> URL da aprire con il browser/handler di default
+# (es. adb shell am start -a android.intent.action.VIEW -d "<url>")
+URL_BOOKMARKS = {}
 
 
 def run_adb(args):
@@ -61,11 +76,24 @@ def execute():
     data = request.get_json(silent=True) or {}
     app_name = data.get("app_name")
     command = data.get("command")
+    url_name = data.get("url_name")
 
-    if not app_name and not command:
-        return jsonify({"error": "Richiesto 'app_name' o 'command' nel body JSON"}), 400
+    if not app_name and not command and not url_name:
+        return jsonify({"error": "Richiesto 'app_name', 'command' o 'url_name' nel body JSON"}), 400
 
     try:
+        if url_name:
+            key = str(url_name).strip().lower()
+            url = URL_BOOKMARKS.get(key)
+            if not url:
+                return jsonify({
+                    "error": f"Link '{url_name}' non mappato",
+                    "available": sorted(URL_BOOKMARKS),
+                }), 404
+
+            run_adb(["shell", "am", "start", "-a", "android.intent.action.VIEW", "-d", url])
+            return jsonify({"status": "ok", "action": "open_url", "url_name": key, "url": url}), 200
+
         if app_name:
             key = str(app_name).strip().lower()
             package = APP_PACKAGES.get(key)

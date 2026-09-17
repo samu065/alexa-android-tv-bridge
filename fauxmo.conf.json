@@ -238,6 +238,149 @@
                     "on_data": "{\"command\": \"power_wake\"}",
                     "use_fake_state": true,
                     "initial_state": "off"
+                },
+                {
+                    "name": "Cursore Su",
+                    "port": 12358,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "on_cmd": "http://127.0.0.1:5000/execute",
+                    "off_cmd": "http://127.0.0.1:5000/health",
+                    "on_data": "{\"command\": \"up\"}",
+                    "use_fake_state": true,
+                    "initial_state": "off"
+                },
+                {
+                    "name": "Cursore Giu",
+                    "port": 12359,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "on_cmd": "http://127.0.0.1:5000/execute",
+                    "off_cmd": "http://127.0.0.1:5000/health",
+                    "on_data": "{\"command\": \"down\"}",
+                    "use_fake_state": true,
+                    "initial_state": "off"
+                },
+                {
+                    "name": "Cursore Sinistra",
+                    "port": 12360,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "on_cmd": "http://127.0.0.1:5000/execute",
+                    "off_cmd": "http://127.0.0.1:5000/health",
+                    "on_data": "{\"command\": \"left\"}",
+                    "use_fake_state": true,
+                    "initial_state": "off"
+                },
+                {
+                    "name": "Cursore Destra",
+                    "port": 12361,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "on_cmd": "http://127.0.0.1:5000/execute",
+                    "off_cmd": "http://127.0.0.1:5000/health",
+                    "on_data": "{\"command\": \"right\"}",
+                    "use_fake_state": true,
+                    "initial_state": "off"
+                },
+                {
+                    "name": "Conferma",
+                    "port": 12362,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "on_cmd": "http://127.0.0.1:5000/execute",
+                    "off_cmd": "http://127.0.0.1:5000/health",
+                    "on_data": "{\"command\": \"select\"}",
+                    "use_fake_state": true,
+                    "initial_state": "off"
+                },
+                {
+                    "name": "Menu TV",
+                    "port": 12363,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "on_cmd": "http://127.0.0.1:5000/execute",
+                    "off_cmd": "http://127.0.0.1:5000/health",
+                    "on_data": "{\"command\": \"menu\"}",
+                    "use_fake_state": true,
+                    "initial_state": "off"
+                },
+                {
+                    "name": "Stop TV",
+                    "port": 12364,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "on_cmd": "http://127.0.0.1:5000/execute",
+                    "off_cmd": "http://127.0.0.1:5000/health",
+                    "on_data": "{\"command\": \"stop\"}",
+                    "use_fake_state": true,
+                    "initial_state": "off"
+                },
+                {
+                    "name": "Traccia Successiva",
+                    "port": 12365,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "on_cmd": "http://127.0.0.1:5000/execute",
+                    "off_cmd": "http://127.0.0.1:5000/health",
+                    "on_data": "{\"command\": \"next\"}",
+                    "use_fake_state": true,
+                    "initial_state": "off"
+                },
+                {
+                    "name": "Traccia Precedente",
+                    "port": 12366,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "on_cmd": "http://127.0.0.1:5000/execute",
+                    "off_cmd": "http://127.0.0.1:5000/health",
+                    "on_data": "{\"command\": \"previous\"}",
+                    "use_fake_state": true,
+                    "initial_state": "off"
+                },
+                {
+                    "name": "Riavvolgi",
+                    "port": 12367,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "on_cmd": "http://127.0.0.1:5000/execute",
+                    "off_cmd": "http://127.0.0.1:5000/health",
+                    "on_data": "{\"command\": \"rewind\"}",
+                    "use_fake_state": true,
+                    "initial_state": "off"
+                },
+                {
+                    "name": "Avanti Veloce",
+                    "port": 12368,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "on_cmd": "http://127.0.0.1:5000/execute",
+                    "off_cmd": "http://127.0.0.1:5000/health",
+                    "on_data": "{\"command\": \"fast_forward\"}",
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 }
             ]
         }
