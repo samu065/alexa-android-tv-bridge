@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify
+import base64
 import json
+import os
 import subprocess
 import logging
 import urllib.error
@@ -9,6 +11,15 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
+
+# Credenziali del controllo remoto HTTP di Kodi: tenute fuori dal codice
+# (file escluso da git, vedi .gitignore) per non finire nel repo pubblico.
+# Copia kodi_credentials.json.example e compila i tuoi valori.
+_KODI_CREDENTIALS_PATH = os.path.join(os.path.dirname(__file__), "kodi_credentials.json")
+with open(_KODI_CREDENTIALS_PATH) as _f:
+    _kodi_credentials = json.load(_f)
+KODI_USER = _kodi_credentials["user"]
+KODI_PASSWORD = _kodi_credentials["password"]
 
 ADB_BIN = "adb"
 # "emulator-5554" e' l'alias con cui l'adb server rileva automaticamente
@@ -88,10 +99,14 @@ def run_kodi_addon(addon_id):
         "params": {"addonid": addon_id},
         "id": 1,
     }).encode("utf-8")
+    auth = base64.b64encode(f"{KODI_USER}:{KODI_PASSWORD}".encode("utf-8")).decode("ascii")
     req = urllib.request.Request(
         KODI_JSONRPC_URL,
         data=payload,
-        headers={"Content-Type": "application/json"},
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Basic {auth}",
+        },
     )
     with urllib.request.urlopen(req, timeout=10) as resp:
         return resp.read().decode("utf-8")
