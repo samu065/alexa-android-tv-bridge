@@ -75,6 +75,15 @@ KODI_ADDONS = {
     "stream4me": "plugin.video.s4me",
 }
 
+# Mappa nome livello volume -> indice sullo stream STREAM_MUSIC (scala 0-15 su questo box,
+# verificata con "adb shell dumpsys audio"). Impostato con "adb shell media volume --stream 3 --set".
+VOLUME_LEVELS = {
+    "volume 25": 4,
+    "volume 50": 8,
+    "volume 75": 11,
+    "volume 100": 15,
+}
+
 
 def run_adb(args):
     """Esegue un comando adb verso ADB_TARGET. Solleva eccezione se fallisce."""
@@ -118,11 +127,26 @@ def execute():
     app_name = data.get("app_name")
     command = data.get("command")
     kodi_addon = data.get("kodi_addon")
+    volume_level = data.get("volume_level")
 
-    if not app_name and not command and not kodi_addon:
-        return jsonify({"error": "Richiesto 'app_name', 'command' o 'kodi_addon' nel body JSON"}), 400
+    if not app_name and not command and not kodi_addon and not volume_level:
+        return jsonify({
+            "error": "Richiesto 'app_name', 'command', 'kodi_addon' o 'volume_level' nel body JSON",
+        }), 400
 
     try:
+        if volume_level:
+            key = str(volume_level).strip().lower()
+            index = VOLUME_LEVELS.get(key)
+            if index is None:
+                return jsonify({
+                    "error": f"Livello volume '{volume_level}' non mappato",
+                    "available": sorted(VOLUME_LEVELS),
+                }), 404
+
+            run_adb(["shell", "media", "volume", "--stream", "3", "--set", str(index), "--show"])
+            return jsonify({"status": "ok", "action": "volume_level", "level": key, "index": index}), 200
+
         if kodi_addon:
             key = str(kodi_addon).strip().lower()
             addon_id = KODI_ADDONS.get(key)

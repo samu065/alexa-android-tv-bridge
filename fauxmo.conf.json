@@ -407,6 +407,58 @@
                     "on_data": "{\"kodi_addon\": \"stream4me\"}",
                     "use_fake_state": true,
                     "initial_state": "off"
+                },
+                {
+                    "name": "Volume 25",
+                    "port": 12371,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "on_cmd": "http://127.0.0.1:5000/execute",
+                    "off_cmd": "http://127.0.0.1:5000/health",
+                    "on_data": "{\"volume_level\": \"volume 25\"}",
+                    "use_fake_state": true,
+                    "initial_state": "off"
+                },
+                {
+                    "name": "Volume 50",
+                    "port": 12372,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "on_cmd": "http://127.0.0.1:5000/execute",
+                    "off_cmd": "http://127.0.0.1:5000/health",
+                    "on_data": "{\"volume_level\": \"volume 50\"}",
+                    "use_fake_state": true,
+                    "initial_state": "off"
+                },
+                {
+                    "name": "Volume 75",
+                    "port": 12373,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "on_cmd": "http://127.0.0.1:5000/execute",
+                    "off_cmd": "http://127.0.0.1:5000/health",
+                    "on_data": "{\"volume_level\": \"volume 75\"}",
+                    "use_fake_state": true,
+                    "initial_state": "off"
+                },
+                {
+                    "name": "Volume 100",
+                    "port": 12374,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "on_cmd": "http://127.0.0.1:5000/execute",
+                    "off_cmd": "http://127.0.0.1:5000/health",
+                    "on_data": "{\"volume_level\": \"volume 100\"}",
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 }
             ]
         }
