@@ -1,6 +1,9 @@
 from flask import Flask, request, jsonify
+import json
 import subprocess
 import logging
+import urllib.error
+import urllib.request
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -52,9 +55,14 @@ KEY_COMMANDS = {
     "fast_forward": "90",   # KEYCODE_MEDIA_FAST_FORWARD
 }
 
-# Mappa nome (case-insensitive) -> URL da aprire con il browser/handler di default
-# (es. adb shell am start -a android.intent.action.VIEW -d "<url>")
-URL_BOOKMARKS = {}
+# Mappa nome addon Kodi (case-insensitive) -> addon id
+# Richiede "Consenti controllo remoto via HTTP" attivo in Kodi
+# (Impostazioni > Servizi > Controllo), altrimenti la porta 8080 non risponde.
+KODI_JSONRPC_URL = "http://127.0.0.1:8080/jsonrpc"
+KODI_ADDONS = {
+    "mandrakodi": "plugin.video.mandrakodi",
+    "stream4me": "plugin.video.s4me",
+}
 
 
 def run_adb(args):
@@ -71,28 +79,54 @@ def run_adb(args):
     return result.stdout.strip()
 
 
+def run_kodi_addon(addon_id):
+    """Porta Kodi in primo piano e lancia un addon via JSON-RPC (Addons.ExecuteAddon)."""
+    run_adb(["shell", "monkey", "-p", "org.xbmc.kodi", "-c", "android.intent.category.LAUNCHER", "1"])
+    payload = json.dumps({
+        "jsonrpc": "2.0",
+        "method": "Addons.ExecuteAddon",
+        "params": {"addonid": addon_id},
+        "id": 1,
+    }).encode("utf-8")
+    req = urllib.request.Request(
+        KODI_JSONRPC_URL,
+        data=payload,
+        headers={"Content-Type": "application/json"},
+    )
+    with urllib.request.urlopen(req, timeout=10) as resp:
+        return resp.read().decode("utf-8")
+
+
 @app.route("/execute", methods=["POST"])
 def execute():
     data = request.get_json(silent=True) or {}
     app_name = data.get("app_name")
     command = data.get("command")
-    url_name = data.get("url_name")
+    kodi_addon = data.get("kodi_addon")
 
-    if not app_name and not command and not url_name:
-        return jsonify({"error": "Richiesto 'app_name', 'command' o 'url_name' nel body JSON"}), 400
+    if not app_name and not command and not kodi_addon:
+        return jsonify({"error": "Richiesto 'app_name', 'command' o 'kodi_addon' nel body JSON"}), 400
 
     try:
-        if url_name:
-            key = str(url_name).strip().lower()
-            url = URL_BOOKMARKS.get(key)
-            if not url:
+        if kodi_addon:
+            key = str(kodi_addon).strip().lower()
+            addon_id = KODI_ADDONS.get(key)
+            if not addon_id:
                 return jsonify({
-                    "error": f"Link '{url_name}' non mappato",
-                    "available": sorted(URL_BOOKMARKS),
+                    "error": f"Addon Kodi '{kodi_addon}' non mappato",
+                    "available": sorted(KODI_ADDONS),
                 }), 404
 
-            run_adb(["shell", "am", "start", "-a", "android.intent.action.VIEW", "-d", url])
-            return jsonify({"status": "ok", "action": "open_url", "url_name": key, "url": url}), 200
+            try:
+                run_kodi_addon(addon_id)
+            except (urllib.error.URLError, TimeoutError) as e:
+                return jsonify({
+                    "error": "Impossibile contattare Kodi via JSON-RPC",
+                    "details": str(e),
+                    "hint": "Verifica che in Kodi sia attivo Impostazioni > Servizi > Controllo > "
+                            "'Consenti controllo remoto via HTTP'",
+                }), 502
+            return jsonify({"status": "ok", "action": "kodi_addon", "addon": key, "addon_id": addon_id}), 200
 
         if app_name:
             key = str(app_name).strip().lower()

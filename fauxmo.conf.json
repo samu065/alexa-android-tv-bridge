@@ -381,6 +381,32 @@
                     "on_data": "{\"command\": \"fast_forward\"}",
                     "use_fake_state": true,
                     "initial_state": "off"
+                },
+                {
+                    "name": "Mandrakodi",
+                    "port": 12369,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "on_cmd": "http://127.0.0.1:5000/execute",
+                    "off_cmd": "http://127.0.0.1:5000/health",
+                    "on_data": "{\"kodi_addon\": \"mandrakodi\"}",
+                    "use_fake_state": true,
+                    "initial_state": "off"
+                },
+                {
+                    "name": "Stream4Me",
+                    "port": 12370,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "on_cmd": "http://127.0.0.1:5000/execute",
+                    "off_cmd": "http://127.0.0.1:5000/health",
+                    "on_data": "{\"kodi_addon\": \"stream4me\"}",
+                    "use_fake_state": true,
+                    "initial_state": "off"
                 }
             ]
         }
