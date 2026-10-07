@@ -101,7 +101,7 @@ def run_adb(args):
 
 def run_kodi_addon(addon_id):
     """Porta Kodi in primo piano e lancia un addon via JSON-RPC (Addons.ExecuteAddon)."""
-    run_adb(["shell", "monkey", "-p", "org.xbmc.kodi", "-c", "android.intent.category.LAUNCHER", "1"])
+    run_adb(["shell", "monkey", "-p", "org.xbmc.kodi", "-c", "android.intent.category.LEANBACK_LAUNCHER", "1"])
     payload = json.dumps({
         "jsonrpc": "2.0",
         "method": "Addons.ExecuteAddon",
@@ -176,7 +176,7 @@ def execute():
                     "available": sorted(APP_PACKAGES),
                 }), 404
 
-            run_adb(["shell", "monkey", "-p", package, "-c", "android.intent.category.LAUNCHER", "1"])
+            run_adb(["shell", "monkey", "-p", package, "-c", "android.intent.category.LEANBACK_LAUNCHER", "1"])
             return jsonify({"status": "ok", "action": "launch_app", "app": key, "package": package}), 200
 
         key = str(command).strip().lower()
